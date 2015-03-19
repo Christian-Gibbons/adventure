@@ -1,52 +1,141 @@
-window.onload = function() {
-    // You might want to start with a template that uses GameStates:
-    //     https://github.com/photonstorm/phaser/tree/master/resources/Project%20Templates/Basic
-    
-    // You can copy-and-paste the code from any of the examples at http://examples.phaser.io here.
-    // You will need to change the fourth parameter to "new Phaser.Game()" from
-    // 'phaser-example' to 'game', which is the id of the HTML element where we
-    // want the game to go.
-    // The assets (and code) can be found at: https://github.com/photonstorm/phaser/tree/master/examples/assets
-    // You will need to change the paths you pass to "game.load.image()" or any other
-    // loading functions to reflect where you are putting the assets.
-    // All loading functions will typically all be found inside "preload()".
-    
-    "use strict";
-    
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-    
-    function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
-    }
-    
-    var bouncy;
-    
-    function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
-        
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something awesome.", style );
-        text.anchor.setTo( 0.5, 0.0 );
-    }
-    
-    function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
-    }
-};
+
+
+
+var cursors;
+var jumpButton;
+
+var player;
+var playerDirection;
+var playerStart;
+
+function initPlayer(game){
+	playerStart = findObjectsByType('playerStart', map, 'Objects');
+	player = game.add.sprite(playerStart[0].x + 8, playerStart[0].y+9, 'player');
+	player.anchor.setTo(0.5,0.5);
+
+	game.physics.arcade.enable(player);
+	player.body.bounce.y = 0.0;
+	player.body.gravity.y = 400;
+	player.body.collideWorldBounds = true;
+	player.body.height = 16;
+	player.body.maxVelocity.x = 200;
+
+	//add animation here
+	player.animations.add('walk_right', [9, 10, 11], 10, true);
+	player.animations.add('walk_left', [27, 28, 29], 10, true);
+	player.animations.add('walk_up', [0, 1, 2], 10, true);
+	player.animations.add('walk_down', [18, 19, 20], 10, true);
+
+	playerDirection = 'right';
+}
+
+function updatePlatformer(game){
+	game.physics.arcade.collide(player, collisionLayer);
+
+	game.physics.arcade.overlap(player, death, killPlayer, null, game);
+	var drag = new Phaser.Point(1000,0);
+	player.body.acceleration.y = 0;
+	player.body.acceleration.x = 0;
+	if (cursors.left.isDown)
+	{
+		//  Move to the left
+		playerDirection = 'left';
+		if(player.body.velocity.x > 0){
+			player.body.acceleration.x = -400;
+		}
+		else{
+			player.body.acceleration.x = -200;
+		}
+		player.animations.play('walk_left');
+
+	}
+	else if (cursors.right.isDown)
+	{
+		//  Move to the right
+		if(player.body.velocity.x < 0){
+			player.body.acceleration.x = 400;
+		}
+		else{
+			player.body.acceleration.x = 200;
+		}
+		playerDirection = 'right';
+		player.animations.play('walk_right');
+	}
+	else{
+		 if(player.body.onFloor()){
+			player.body.drag.x = 300;
+		}
+		else{
+			player.body.drag.x = 150;
+		}
+	}
+	if(player.body.velocity.x ===0){
+		player.animations.stop();
+		player.frame = 27;
+		if(playerDirection === 'right'){
+			player.frame = 9;
+		}
+	}
+
+	// Allow player to jump if they are touching the ground.
+	if (jumpButton.isDown)
+	{
+ 		if(player.body.onFloor()){
+			player.body.velocity.y = -300;
+		}
+//		player.body.drag.y = 0;	
+	}
+	else if(player.body.velocity.y < 0){
+		player.body.acceleration.y = 200;
+	}
+}
+
+function setAdvancedCollision(collision){
+	collision.layer.data.forEach(function(i){
+		i.forEach(function(entry){
+			entry.setCollision(entry.properties.collideLeft==='true', entry.properties.collideRight==='true', entry.properties.collideUp==='true', entry.properties.collideDown==='true');
+		});
+	});
+}
+
+function findObjectsByType(type, map, layer) {
+	var result = new Array();
+	map.objects[layer].forEach(function(element){
+		if(element.properties.type === type){
+			element.y -= map.tileHeight;
+			result.push(element);
+		}
+	});
+	return result;
+}
+
+function createFromTiledObject(element, group){
+	var sprite = group.create(element.x, element.y, element.properties.sprite);
+	Object.keys(element.properties).forEach(function(key){
+		sprite[key] = element.properties[key];
+	});
+	sprite.height = element.height;
+	sprite.width = element.width;
+}
+
+	/* 
+	 * type is a string that contains the properties.type to be searched for, state should receive "this"
+	 * Function returns the newly populated group.
+	 */
+function populateGroup(type, state){
+	var thisGroup = state.add.group();
+	thisGroup.enableBody = true;
+
+	var result = findObjectsByType(type, map, 'Objects');
+	result.forEach(function(element){
+		createFromTiledObject(element, thisGroup);
+	}, this);
+	return thisGroup;
+}
+
+function killPlayer(player, death){
+	console.log("dead");
+	player.kill();
+	map.destroy();
+	this.state.start('MainMenu');
+}

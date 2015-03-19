@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello! Wow!</title>
+    <script src="js/phaser.js"></script>
+    <script src="js/main.js"></script>
+
+<style>
+body
+{
+    color: #777;
+    font-family: "Avenir", Verdana, sans-serif;
+}
+#readme
+{
+    margin-top: 10px;
+}
+</style>
+
+</head>
+<body>
+<div id="game"></div>
+<div id="readme">
+<h2>Free Dog</h2>
+<ul>
+
+
+<li><strong>High Concept:</strong>
+You are a free roaming dog who just wants to pee on fire hydrants; be careful to avoid dog catchers.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+Laugh at the ridiculousness of the game concept.
+</li>
+
+<li><strong>Genre:</strong>
+Basic platforming/collecting
+</li>
+
+<li><strong>Game play:</strong>
+As a dog, the left and right arrow keys control running left and right.  The Spacebar is used to jump.  The up key is used to unleash a golden fury upon the fire hydrants of the world.  Ideally, the game would have had more challenge with additional spawning dog-catchers.
+</li>
+
+<li><strong>Prototype goal:</strong>
+Gain some familiarity with javascript, phaser, and animation.
+</li>
+
+<li><strong>Features:</strong>
+Color-changing fire hydrants
+</li>
+
+<li><strong>Setting/Premise:</strong>
+You are a dog.  Dogs pee on things, especially fire hydrants.
+</li>
+
+<li><strong>Target Audience:</strong>
+People with nothing better to do with their time.
+</li>
+
+<li><strong>Play time:</strong>
+Maybe a minute
+</li>
+
+<li><strong>Strategies:</strong>
+Jump over the dog catcher when he comes.
+</li>
+
+<li><strong>Prototype Assets:</strong>
+http://www.clipartbest.com/clipart-9cRKMpbce<br>
+http://opengameart.org/content/biker-character-platformer<br>
+http://opengameart.org/content/brown-dog-46x27
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Started with the phaser tutorial as a base and built upon it.
+</li>
+
+</ul>
+</div>
+</body>
+</html>
