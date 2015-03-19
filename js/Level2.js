@@ -31,7 +31,7 @@ BasicGame.Level2 = function (game) {
 	var death;
 BasicGame.Level2.prototype = {
 	create: function () {
-		this.stage.backgroundColor = '#FF00FF';
+		this.stage.backgroundColor = '#800080';
 		map = this.add.tilemap('map2');
 		map.addTilesetImage('scraps_bricks', 'bricks');
 

@@ -63,8 +63,10 @@ BasicGame.Level1.prototype = {
 		updatePlatformer(this);
 		if(coins.total === 0){
 			levelID++;
+			//collisionLayer.destroy();
+			//fringeLayer.destroy();
 			map.destroy();
-			player.kill();
+			this.world.setBounds(0,0,0,0);
 			this.state.start('Level2');
 		}
 	},

@@ -345,8 +345,8 @@
                  "type":"playerStart",
                  "visible":true,
                  "width":17,
-                 "x":19,
-                 "y":346
+                 "x":25,
+                 "y":339
                 }, 
                 {
                  "height":5,
@@ -422,6 +422,16 @@
             },
          "spacing":0,
          "tileheight":16,
+         "tileproperties":
+            {
+             "0":
+                {
+                 "collideDown":"true",
+                 "collideLeft":"true",
+                 "collideRight":"true",
+                 "collideUp":"true"
+                }
+            },
          "tilewidth":16
         }],
  "tilewidth":16,

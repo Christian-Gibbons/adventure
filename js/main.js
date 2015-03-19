@@ -158,5 +158,6 @@ function killPlayer(player, death){
 	console.log("dead");
 	player.kill();
 	map.destroy();
-	this.state.start('MainMenu');
+	this.world.setBounds(0,0,0,0);
+	this.state.restart();
 }
