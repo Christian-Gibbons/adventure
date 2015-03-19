@@ -9,6 +9,9 @@
  <tileset firstgid="463" name="box" tilewidth="16" tileheight="16">
   <image source="../../../../tilesets/tiles/box.png" width="16" height="16"/>
  </tileset>
+ <tileset firstgid="464" name="scraps_bricks" tilewidth="16" tileheight="16">
+  <image source="../../../../tilesets/bricks/scraps_bricks.png" width="432" height="16"/>
+ </tileset>
  <layer name="regions" width="5" height="5">
   <data encoding="base64" compression="zlib">
    eJxjYMAOmNBoSgAAAYQABQ==
@@ -21,47 +24,47 @@
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOjuAQJwcAADqUAMU=
+   eJxjYMAOjkDpC4w4FJAAAHIXAZY=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOjuIQJwcAADrgAMY=
+   eJxjYMAOjkLpi4w4FJAAAHKnAZg=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOjuEQJwcAADssAMc=
+   eJxjYMAOjkHpS4w4FJAAAHM3AZo=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOZuMQJwcAAC5oAJw=
+   eJxjYMAOZkPpy4w4FJAAAGa3AXA=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAO5uAQJwcAAC60AJ0=
+   eJxjYMAO5kDpK4w4FJAAAGdHAXI=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAO5uIQJwcAAC8AAJ4=
+   eJxjYMAO5kLpq4w4FJAAAGfXAXQ=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAO5uEQJwcAAC9MAJ8=
+   eJxjYMAO5kHpa4w4FJAAAGhnAXY=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAO5uMQJwcAAC+YAKA=
+   eJxjYMAO5kPp64w4FJAAAGj3AXg=
   </data>
  </layer>
  <layer name="input_Fringe" width="5" height="5">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOFuAQJwcAAC/kAKE=
+   eJxjYMAOFkDpG4w4FJAAAGmHAXo=
   </data>
  </layer>
  <layer name="output_Collision" width="5" height="5">

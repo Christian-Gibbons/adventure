@@ -8,6 +8,9 @@ var player;
 var playerDirection;
 var playerStart;
 
+var coins;
+
+var levelID =1;
 function initPlayer(game){
 	playerStart = findObjectsByType('playerStart', map, 'Objects');
 	player = game.add.sprite(playerStart[0].x + 8, playerStart[0].y+9, 'player');
@@ -18,6 +21,7 @@ function initPlayer(game){
 	player.body.gravity.y = 400;
 	player.body.collideWorldBounds = true;
 	player.body.height = 16;
+	player.body.width = 16;
 	player.body.maxVelocity.x = 200;
 
 	//add animation here
@@ -29,10 +33,27 @@ function initPlayer(game){
 	playerDirection = 'right';
 }
 
+function initCoins(game){
+	coins = populateGroup('coin', game);
+	coins.setAll('enableBody', true);
+	coins.setAll('physicsBodyType', Phaser.Physics.ARCADE);
+	coins.callAll('animations.add', 'animations', 'spin', [0,1,2,3,4,5], 10, true);
+	coins.setAll('anchor.x', 0.5);
+	coins.setAll('anchor.y', 0.5);
+	coins.setAll('height', 10);
+	coins.setAll('width', 9);
+}
+
+function killCoin(player, coin){
+	coin.kill();
+}
 function updatePlatformer(game){
 	game.physics.arcade.collide(player, collisionLayer);
 
 	game.physics.arcade.overlap(player, death, killPlayer, null, game);
+	game.physics.arcade.overlap(player, coins, killCoin, null, game);
+	coins.callAll('play', null, 'spin');
+
 	var drag = new Phaser.Point(1000,0);
 	player.body.acceleration.y = 0;
 	player.body.acceleration.x = 0;

@@ -17,9 +17,12 @@ BasicGame.Preloader.prototype = {
 
 
 		this.load.tilemap('map1', 'assets/tilemaps/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('map2', 'assets/tilemaps/maps/level2.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('platforms', 'assets/tilemaps/tilesets/cartoony_platformer/tiles_22.png');
-		this.load.spritesheet('player', 'assets/spritesheets/sara/sara 16x18 source.png', 16, 18);
 		this.load.image('box', 'assets/tilemaps/tilesets/tiles/box.png');
+		this.load.image('bricks', 'assets/tilemaps/tilesets/bricks/scraps_bricks.png');
+		this.load.spritesheet('player', 'assets/spritesheets/sara/sara 16x18 source.png', 16, 18);
+		this.load.spritesheet('coin', 'assets/spritesheets/coin/spin_coin_big_strip6.png', 9, 10);
 	},
 	create: function () {
 	// Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes

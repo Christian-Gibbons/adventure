@@ -1,5 +1,5 @@
 
-BasicGame.Level1 = function (game) {
+BasicGame.Level2 = function (game) {
 /*
 	// When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 	this.game; // a reference to the currently running game (Phaser.Game)
@@ -29,12 +29,11 @@ BasicGame.Level1 = function (game) {
 	var collisionLayer;
 
 	var death;
-BasicGame.Level1.prototype = {
+BasicGame.Level2.prototype = {
 	create: function () {
-		this.stage.backgroundColor = '#8080FF';
-		map = this.add.tilemap('map1');
-		map.addTilesetImage('tiles_22', 'platforms');
-		map.addTilesetImage('box', 'box');
+		this.stage.backgroundColor = '#FF00FF';
+		map = this.add.tilemap('map2');
+		map.addTilesetImage('scraps_bricks', 'bricks');
 
 		fringeLayer = map.createLayer('Fringe');
 		collisionLayer = map.createLayer('Collision');
@@ -46,7 +45,6 @@ BasicGame.Level1.prototype = {
 //		backgroundLayer.resizeWorld();
 		fringeLayer.resizeWorld();
 
-//		doors = populateGroup('door', this);
 		death = populateGroup('death', this);
 		initCoins(this);
 		initPlayer(this);
@@ -62,10 +60,7 @@ BasicGame.Level1.prototype = {
 		// Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 		updatePlatformer(this);
 		if(coins.total === 0){
-			levelID++;
-			map.destroy();
-			player.kill();
-			this.state.start('Level2');
+		//	this.state.start('');
 		}
 	},
 	quitGame: function (pointer) {

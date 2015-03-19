@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Phaser Basic Project Template</title>
+<title>Platformer</title>
 <script src="js/phaser.min.js"></script>
 <script src="js/Boot.js"></script>
 <script src="js/Preloader.js"></script>
 <script src="js/MainMenu.js"></script>
 <script src="js/Level1.js"></script>
 <script src="js/main.js"></script>
+<script src="js/Level2.js"></script>
 </head>
 <body>
 <div id="gameContainer"></div>
@@ -23,10 +24,68 @@ game.state.add('Boot', BasicGame.Boot);
 game.state.add('Preloader', BasicGame.Preloader);
 game.state.add('MainMenu', BasicGame.MainMenu);
 game.state.add('Level1', BasicGame.Level1);
+game.state.add('Level2', BasicGame.Level2);
 
 // Now start the Boot state.
 game.state.start('Boot');
 };
 </script>
+</body>
+<div id="game"></div>
+<div id="readme">
+<h2>Platformer</h2>
+<ul>
+
+
+<li><strong>High Concept:</strong>
+You are a free roaming dog who just wants to pee on fire hydrants; be careful to avoid dog catchers.
+</li>
+
+<li><strong>Player Experience Goals:</strong>
+Laugh at the ridiculousness of the game concept.
+</li>
+
+<li><strong>Genre:</strong>
+Platforming
+</li>
+
+<li><strong>Game play:</strong>
+Left and right arrows move character left and right, spacebar is jump.
+</li>
+
+<li><strong>Prototype goal:</strong>
+Learn to utilize game states and directional collisions.  Also experiment with acceleration and drag.
+</li>
+
+<li><strong>Features:</strong>
+Platforms that can be passed through from the sides and bottom but not the top.
+</li>
+
+<li><strong>Setting/Premise:</strong>
+
+</li>
+
+<li><strong>Target Audience:</strong>
+
+</li>
+
+<li><strong>Play time:</strong>
+
+</li>
+
+<li><strong>Strategies:</strong>
+
+</li>
+
+<li><strong>Prototype Assets:</strong>
+
+</li>
+
+<li><strong>Prototype Closest Other Game:</strong>
+Super Mario Bros.
+</li>
+
+</ul>
+</div>
 </body>
 </html>
