@@ -23,6 +23,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('bricks', 'assets/tilemaps/tilesets/bricks/scraps_bricks.png');
 		this.load.spritesheet('player', 'assets/spritesheets/sara/sara 16x18 source.png', 16, 18);
 		this.load.spritesheet('coin', 'assets/spritesheets/coin/spin_coin_big_strip6.png', 9, 10);
+		this.load.image('leprechaun', 'assets/spritesheets/surprise/leprechaun.png');
 	},
 	create: function () {
 	// Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes

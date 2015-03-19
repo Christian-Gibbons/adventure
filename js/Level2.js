@@ -31,7 +31,7 @@ BasicGame.Level2 = function (game) {
 	var death;
 BasicGame.Level2.prototype = {
 	create: function () {
-		this.stage.backgroundColor = '#800080';
+		this.stage.backgroundColor = '#8000F0';
 		map = this.add.tilemap('map2');
 		map.addTilesetImage('scraps_bricks', 'bricks');
 
@@ -60,6 +60,10 @@ BasicGame.Level2.prototype = {
 		// Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 		updatePlatformer(this);
 		if(coins.total === 0){
+			var leprechaun = this.add.sprite(player.x, player.y, 'leprechaun');
+			leprechaun.anchor.x=player.anchor.x;
+			leprechaun.anchor.y=player.anchor.y;
+			player.kill();
 		//	this.state.start('');
 		}
 	},
