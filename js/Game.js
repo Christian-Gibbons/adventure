@@ -34,25 +34,27 @@ BasicGame.Game = function (game) {
 
 BasicGame.Game.prototype = {
 	create: function () {
-		this.stage.backgroundColor = '#787878';
-
 		map = this.add.tilemap('overworld');
+
 		map.addTilesetImage('tileset_8', 'happylandTiles');
 		map.addTilesetImage('PostSovietTile', 'sovietTiles');
+		map.addTilesetImage('collision', 'collisionTile');
 
 		backgroundLayer = map.createLayer('Background');
 		fringeLayer = map.createLayer('Fringe');
 		collisionLayer = map.createLayer('Collision');
 		collisionLayer.visible = false;
+		collisionLayer.renderable = false;
 
 		this.physics.arcade.enable(collisionLayer);
 		map.setCollisionByExclusion([],true,collisionLayer);
 		backgroundLayer.resizeWorld();
 
-		createDoors(this);
+//		createDoors();
 
+		doors = populateGroup('door', this);
 		playerStart = findObjectsByType('playerStart', map, 'Objects');
-		player = this.add.sprite(playerStart[0].x + 8, playerStart[0].y+9, playerStart[0].properties.sprite);
+		player = this.add.sprite(playerStart[0].x, playerStart[0].y, 'player');
 		player.anchor.setTo(0.5,0.5);
 
 		this.physics.arcade.enable(player);
@@ -60,7 +62,6 @@ BasicGame.Game.prototype = {
 		player.body.gravity.y = 0;
 		player.body.collideWorldBounds = true;
 
-		//add animation here
 		player.animations.add('walk_right', [9, 10, 11], 10, true);
 		player.animations.add('walk_left', [27, 28, 29], 10, true);
 		player.animations.add('walk_up', [0, 1, 2], 10, true);
@@ -68,10 +69,11 @@ BasicGame.Game.prototype = {
 
 		playerDirection = 'down';
 		cursors = this.input.keyboard.createCursorKeys();
-		//		jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+//		jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 		this.camera.follow(player);
 		this.camera.deadzone = new Phaser.Rectangle(100,100,250,400);
+
 
 	},
 	update: function () {
@@ -130,7 +132,7 @@ BasicGame.Game.prototype = {
 	this.state.start('MainMenu');
 	}
 };
-
+/*
 function findObjectsByType(type, map, layer) {
 	var result = new Array();
 	map.objects[layer].forEach(function(element){
@@ -168,7 +170,7 @@ function createDoors(game){
 		createFromTiledObject(element, doors);
 	}, this);
 }
-
+*/
 
 function enterDoor(player, door){
 /*	map.removeAllLayers();

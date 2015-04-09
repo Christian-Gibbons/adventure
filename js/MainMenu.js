@@ -15,7 +15,7 @@ BasicGame.MainMenu.prototype = {
 */	},
 	update: function () {
 		// Do some nice funky main menu effect here
-		this.state.start('Level1');
+		this.state.start('Game');
 	},
 	startGame: function (pointer) {
 		// Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
