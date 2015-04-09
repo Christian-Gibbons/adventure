@@ -8,6 +8,7 @@ var player;
 var playerDirection;
 var playerStart;
 
+var LEFT_BUTTON = 0; //this SHOULD be in input.mouse.LEFT_BUTTON...
 var coins;
 
 var levelID =1;

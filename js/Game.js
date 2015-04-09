@@ -31,6 +31,7 @@ BasicGame.Game = function (game) {
 	var items;
 	var doors;
 	var door;
+	var destination = {};
 
 BasicGame.Game.prototype = {
 	create: function () {
@@ -82,7 +83,7 @@ BasicGame.Game.prototype = {
 
 
 		this.physics.arcade.overlap(player, doors, enterDoor, null, this);
-
+/*
 		player.body.velocity.x = 0;
 		player.body.velocity.y = 0;
 		var walkSpeed = 75;
@@ -122,8 +123,12 @@ BasicGame.Game.prototype = {
 				default:
 					break;
 			}
+		}*/
+		if(this.input.mouse.button === LEFT_BUTTON){
+			player.body.x = this.input.mousePointer.x;
+			player.body.y = this.input.mousePointer.y;
 		}
-
+	
 	},
 	quitGame: function (pointer) {
 		// Here you should destroy anything you no longer need.
@@ -194,5 +199,5 @@ function enterDoor(player, door){
 	player.body.x = playerStart[0].x;
 	player.body.y = playerStart[0].y;*/
 //	map.destroy();
-	this.state.start(door.targetMap);
+//	this.state.start(door.targetMap);
 }
