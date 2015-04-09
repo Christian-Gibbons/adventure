@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Platformer</title>
+<title>Adventure Gone Wrong</title>
 <script src="js/phaser.min.js"></script>
 <script src="js/Boot.js"></script>
 <script src="js/Preloader.js"></script>
@@ -31,61 +31,57 @@ game.state.start('Boot');
 </body>
 <div id="game"></div>
 <div id="readme">
-<h2>Platformer</h2>
+<h2>Adventure gone wrong</h2>
 <ul>
 
 
 <li><strong>High Concept:</strong>
-
+Was intended to be a mouse-controlled adventure game.
 </li>
 
 <li><strong>Player Experience Goals:</strong>
-
+Go on an adventure
 </li>
 
 <li><strong>Genre:</strong>
-Platforming
+Adventure
 </li>
 
 <li><strong>Game play:</strong>
-Left and right arrows move character left and right, spacebar is jump.
+Left mouse-click does... something
 </li>
 
 <li><strong>Prototype goal:</strong>
-Learn to utilize game states and directional collisions.  Also experiment with acceleration and drag.  Most of the development time went into designing the aspects of the engine such as the directional collision; this game has the potential for becoming more compelling with some tweeking in how the controls handle and in adding more levels that are larger and more elaborate.
+I wanted to implement an effective and elegant-looking path-finding algorithm to work with the mouse controls.  My initial thought was to implement the A* path finding algorithm with a slight modification to cut corners when there is no obstacle in the way of the next node, however when passing my idea by my humanoid robotics professor, he recommended I look into potential fields.  After looking into it, potential fields seemed like an interesting concept that can give an organic feel to the path-finding and it works on-the-fly to adapt to moving obstacles.  Implementation was... less than successful.  The character only wants to move in one direction regardless of where the mouse is clicked, though mouse proximity to the character does make a difference, and the collision tiles do provide a repelling force.
 </li>
 
 <li><strong>Features:</strong>
-Platforms that can be passed through from the sides and bottom but not the top.
+A wildly bouncy character with difficult to understand movement.
 </li>
 
 <li><strong>Setting/Premise:</strong>
-You control a girl who is going around collecting gold coins.  Funny thing about people who hoard pots of gold...
+You are a person with apparently limited motor control.
 </li>
 
 <li><strong>Target Audience:</strong>
-Fans of the platforming genre.
 </li>
 
 <li><strong>Play time:</strong>
-Only a couple minutes at most in it's current two-level state
+
 </li>
 
 <li><strong>Strategies:</strong>
-Platform well.
 </li>
 
 <li><strong>Prototype Assets:</strong><br>
-Michele 'Buch' Bucelli- http://opengameart.org/users/buch<br>
-Eugeny Danchenko- http://opengameart.org/users/truezipp<br>
-Stephen "Redshrike" Challener- http://opengameart.org/users/redshrike<br>
-William Thompson- http://opengameart.org/users/williamthompsonj<br>
-Mandi Paugh- http://opengameart.org/<br>
-Charles Gabriel- http://opengameart.org/users/charlesgabriel
+http://opengameart.org/content/happyland-tileset<br>
+http://opengameart.org/content/16x16-indoor-rpg-tileset-the-baseline<br>
+http://opengameart.org/content/post-soviet-tileset<br>
+http://opengameart.org/content/sara-wizard
 </li>
 
 <li><strong>Prototype Closest Other Game:</strong>
-Super Mario Bros.
+
 </li>
 
 </ul>
